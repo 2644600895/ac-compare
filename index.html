@@ -266,7 +266,7 @@
       flex-shrink: 0;
     }
     .plat-jd { background: #dc2626; color: #fff; font-size: 0.7rem; }
-    .plat-tb { background: #ff6900; color: #fff; font-size: 0.7rem; }
+    .plat-pdd { background: #e02020; color: #fff; font-size: 0.7rem; }
     .plat-sn { background: #f59f00; color: #fff; font-size: 0.7rem; }
     .plat-md { background: #1565c0; color: #fff; font-size: 0.7rem; }
 
@@ -617,6 +617,18 @@
             <button class="buy-btn buy-btn-ghost" style="color:var(--gray);border-color:var(--border)">参考</button>
           </div>
 
+          <div class="price-row" onclick="openPDD('格力云錦三代 3匹 KFR-72LW 柜机')">
+            <div class="plat-logo plat-pdd">拼多多</div>
+            <div class="plat-info">
+              <div class="plat-name">拼多多百亿补贴</div>
+              <div class="plat-note">格力3匹柜机 · 无需登录可浏览</div>
+            </div>
+            <div class="price-block">
+              <div class="price-main" style="font-size:0.9rem">搜索比价</div>
+            </div>
+            <button class="buy-btn buy-btn-ghost" style="color:#e02020;border-color:#e02020">去搜索</button>
+          </div>
+
         </div>
       </div>
     </div>
@@ -680,6 +692,18 @@
               <div class="price-after">补贴后 ≈¥4,100</div>
             </div>
             <button class="buy-btn buy-btn-ghost">去查看</button>
+          </div>
+
+          <div class="price-row" onclick="openPDD('美的冷静星 3匹 KFR-72LW 柜机 一级能效')">
+            <div class="plat-logo plat-pdd">拼多多</div>
+            <div class="plat-info">
+              <div class="plat-name">拼多多百亿补贴</div>
+              <div class="plat-note">美的 KFR-72LW · 无需登录可浏览</div>
+            </div>
+            <div class="price-block">
+              <div class="price-main" style="font-size:0.9rem">搜索比价</div>
+            </div>
+            <button class="buy-btn buy-btn-ghost" style="color:#e02020;border-color:#e02020">去搜索</button>
           </div>
 
         </div>
@@ -774,6 +798,18 @@
             <button class="buy-btn buy-btn-ghost" style="color:var(--gray);border-color:var(--border)">参考</button>
           </div>
 
+          <div class="price-row" onclick="openPDD('格力清玄风 2匹 KFR-50GW 挂机 一级能效')">
+            <div class="plat-logo plat-pdd">拼多多</div>
+            <div class="plat-info">
+              <div class="plat-name">拼多多百亿补贴</div>
+              <div class="plat-note">格力2匹挂机 · 无需登录可浏览</div>
+            </div>
+            <div class="price-block">
+              <div class="price-main" style="font-size:0.9rem">搜索比价</div>
+            </div>
+            <button class="buy-btn buy-btn-ghost" style="color:#e02020;border-color:#e02020">去搜索</button>
+          </div>
+
         </div>
       </div>
     </div>
@@ -837,6 +873,18 @@
               <div class="price-main" style="font-size:0.9rem;color:var(--gray)">天猫搜索</div>
             </div>
             <button class="buy-btn buy-btn-ghost">去查看</button>
+          </div>
+
+          <div class="price-row" onclick="openPDD('美的酷省电 2匹 KFR-46GW 挂机 一级能效')">
+            <div class="plat-logo plat-pdd">拼多多</div>
+            <div class="plat-info">
+              <div class="plat-name">拼多多百亿补贴</div>
+              <div class="plat-note">美的 KFR-46GW · 无需登录可浏览</div>
+            </div>
+            <div class="price-block">
+              <div class="price-main" style="font-size:0.9rem">搜索比价</div>
+            </div>
+            <button class="buy-btn buy-btn-ghost" style="color:#e02020;border-color:#e02020">去搜索</button>
           </div>
 
         </div>
@@ -1038,7 +1086,13 @@
     var scheme = 'openapp.jdmobile://virtual?params=%7B%22category%22%3A%22jump%22%2C%22des%22%3A%22productDetail%22%2C%22skuId%22%3A%22' + itemId + '%22%7D';
     openApp(scheme, 'https://item.jd.com/' + itemId + '.html');
   }
-  // 淘宝App Scheme 直跳（手机装了淘宝App则直接进入App内搜索，不走网页登录）
+  function openPDD(keyword) {
+    var q = encodeURIComponent(keyword);
+    var scheme = 'pinduoduo://com.xunmeng.pinduoduo/search_result.html?search_key=' + q;
+    var fallback = 'https://mobile.yangkeduo.com/search_result.html?search_key=' + q;
+    openApp(scheme, fallback);
+  }
+（手机装了淘宝App则直接进入App内搜索，不走网页登录）
   function openTaobao(itemId, keyword) {
     if (itemId) {
       openApp('taobao://item.taobao.com/item.htm?id=' + itemId,
