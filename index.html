@@ -656,11 +656,11 @@
             <button class="buy-btn buy-btn-primary">立即购买</button>
           </div>
 
-          <div class="price-row" onclick="openMidea('https://www.midea.cn/30/1000000000400731804373.html')">
-            <div class="plat-logo plat-md">美的</div>
+          <div class="price-row" onclick="openTaobao(null,'美的KFR-72LW/N8MFB3 3匹柜机')">
+            <div class="plat-logo plat-tb">天猫</div>
             <div class="plat-info">
-              <div class="plat-name">美的官方商城</div>
-              <div class="plat-note">官网直购</div>
+              <div class="plat-name">天猫搜索</div>
+              <div class="plat-note">美的 KFR-72LW/N8MFB3</div>
             </div>
             <div class="price-block">
               <div class="price-main">¥4,500</div>
@@ -827,14 +827,14 @@
             <button class="buy-btn buy-btn-ghost">去查看</button>
           </div>
 
-          <div class="price-row" onclick="openMidea('https://www.midea.cn/30/1000000000400731470716.html')">
-            <div class="plat-logo plat-md">美的</div>
+          <div class="price-row" onclick="openTaobao(null,'美的KFR-46GW/N8KS1-1 2匹挂机')">
+            <div class="plat-logo plat-tb">天猫</div>
             <div class="plat-info">
-              <div class="plat-name">美的官方商城</div>
-              <div class="plat-note">以页面实时价格为准</div>
+              <div class="plat-name">天猫搜索</div>
+              <div class="plat-note">美的 KFR-46GW/N8KS1-1</div>
             </div>
             <div class="price-block">
-              <div class="price-main" style="font-size:0.9rem;color:var(--gray)">查看实时价</div>
+              <div class="price-main" style="font-size:0.9rem;color:var(--gray)">天猫搜索</div>
             </div>
             <button class="buy-btn buy-btn-ghost">去查看</button>
           </div>
@@ -1050,9 +1050,7 @@
   function openSuning(itemId, fallbackUrl) {
     openApp('suning://productDetail?commodityCode=' + itemId, fallbackUrl);
   }
-  function openMidea(url) {
-    window.open(url, '_blank');
-  }
+
 </script>
 
 </body>
