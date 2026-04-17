@@ -266,7 +266,7 @@
       flex-shrink: 0;
     }
     .plat-jd { background: #dc2626; color: #fff; font-size: 0.7rem; }
-    .plat-tb { background: #e02020; color: #fff; font-size: 0.7rem; }
+    .plat-tb { background: #ff6900; color: #fff; font-size: 0.7rem; }
     .plat-sn { background: #f59f00; color: #fff; font-size: 0.7rem; }
     .plat-md { background: #1565c0; color: #fff; font-size: 0.7rem; }
 
@@ -592,9 +592,9 @@
           </div>
 
           <div class="price-row" onclick="openTaobao(null,'格力KFR-72LW/NhBa1BAj')">
-            <div class="plat-logo plat-tb">拼多多</div>
+            <div class="plat-logo plat-tb">天猫</div>
             <div class="plat-info">
-              <div class="plat-name">拼多多</div>
+              <div class="plat-name">天猫旗舰店</div>
               <div class="plat-note">格力官方授权店</div>
             </div>
             <div class="price-block">
@@ -657,9 +657,9 @@
           </div>
 
           <div class="price-row" onclick="openTaobao(null,'美的KFR-72LW/N8MFB3 3匹柜机')">
-            <div class="plat-logo plat-tb">拼多多</div>
+            <div class="plat-logo plat-tb">天猫</div>
             <div class="plat-info">
-              <div class="plat-name">拼多多</div>
+              <div class="plat-name">天猫旗舰店</div>
               <div class="plat-note">美的 KFR-72LW/N8MFB3</div>
             </div>
             <div class="price-block">
@@ -762,9 +762,9 @@
           </div>
 
           <div class="price-row" onclick="openTaobao(null,'格力KFR-50GW/NhKf1BAt')">
-            <div class="plat-logo plat-tb">拼多多</div>
+            <div class="plat-logo plat-tb">天猫</div>
             <div class="plat-info">
-              <div class="plat-name">拼多多</div>
+              <div class="plat-name">天猫旗舰店</div>
               <div class="plat-note">⚠️ 价格虚高，不推荐</div>
             </div>
             <div class="price-block">
@@ -828,13 +828,13 @@
           </div>
 
           <div class="price-row" onclick="openTaobao(null,'美的KFR-46GW/N8KS1-1 2匹挂机')">
-            <div class="plat-logo plat-tb">拼多多</div>
+            <div class="plat-logo plat-tb">天猫</div>
             <div class="plat-info">
-              <div class="plat-name">拼多多</div>
+              <div class="plat-name">天猫旗舰店</div>
               <div class="plat-note">美的 KFR-46GW/N8KS1-1</div>
             </div>
             <div class="price-block">
-              <div class="price-main" style="font-size:0.9rem;color:var(--gray)">拼多多</div>
+              <div class="price-main" style="font-size:0.9rem;color:var(--gray)">天猫搜索</div>
             </div>
             <button class="buy-btn buy-btn-ghost">去查看</button>
           </div>
@@ -848,7 +848,7 @@
       <ul>
         <li>2匹挂机<strong>完全覆盖50㎡</strong>，无需购买柜机，性价比最高</li>
         <li>美的酷省电仅18分贝，<strong>极为安静</strong>，顾客在上层试衣时体验好</li>
-        <li>格力清炫风同款，<strong>京东比苏宁/拼多多便宜</strong>，务必选京东购买</li>
+        <li>格力清炫风同款，<strong>京东比苏宁/天猫便宜3000-4000元</strong>，务必选京东购买</li>
         <li>挂机安装高度建议距地面<strong>1.8-2.2米</strong>，不要对着试衣间出风</li>
       </ul>
     </div>
@@ -1005,7 +1005,7 @@
 </div><!-- /main -->
 
 <footer>
-  <p>价格来源：京东 / 苏宁 / 拼多多，2026-04-17 搜集整理，实际以各平台页面显示为准</p>
+  <p>价格来源：京东 / 苏宁 / 天猫，2026-04-17 搜集整理，实际以各平台页面显示为准</p>
   <p style="margin-top:4px">国补政策以购买时官方最新说明为准 · 本页面仅供参考，不构成购买建议</p>
 </footer>
 
@@ -1038,13 +1038,16 @@
     var scheme = 'openapp.jdmobile://virtual?params=%7B%22category%22%3A%22jump%22%2C%22des%22%3A%22productDetail%22%2C%22skuId%22%3A%22' + itemId + '%22%7D';
     openApp(scheme, 'https://item.jd.com/' + itemId + '.html');
   }
-  // 拼多多：无需登录可直接浏览商品
+  // 淘宝App Scheme 直跳（手机装了淘宝App则直接进入App内搜索，不走网页登录）
   function openTaobao(itemId, keyword) {
-    var q = keyword || itemId;
-    // 唤起拼多多App，降级到拼多多搜索页（无需登录）
-    var scheme = 'pinduoduo://com.xunmeng.pinduoduo/search_result.html?search_key=' + encodeURIComponent(q);
-    var fallback = 'https://mobile.yangkeduo.com/search_result.html?search_key=' + encodeURIComponent(q);
-    openApp(scheme, fallback);
+    if (itemId) {
+      openApp('taobao://item.taobao.com/item.htm?id=' + itemId,
+              'https://m.taobao.com/#/detail?itemNumId=' + itemId);
+    } else {
+      var q = encodeURIComponent(keyword);
+      openApp('taobao://s.taobao.com/search?q=' + q,
+              'https://s.taobao.com/search?q=' + q);
+    }
   }
   function openSuning(itemId, fallbackUrl) {
     openApp('suning://productDetail?commodityCode=' + itemId, fallbackUrl);
