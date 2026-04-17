@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>服装店空调选购比价 · 2026</title>
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --card: #fff;
+      --primary: #2563eb;
+      --primary-light: #dbeafe;
+      --green: #16a34a;
+      --green-light: #dcfce7;
+      --orange: #ea580c;
+      --orange-light: #ffedd5;
+      --gray: #6b7280;
+      --border: #e5e7eb;
+      --shadow: 0 2px 16px rgba(0,0,0,0.08);
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--bg);
+      color: #1f2937;
+      min-height: 100vh;
+      padding: 0 0 60px;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #1e40af 0%, #2563eb 60%, #7c3aed 100%);
+      color: #fff;
+      padding: 36px 24px 28px;
+      text-align: center;
+    }
+    header h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: 0.02em; }
+    header p { margin-top: 8px; opacity: 0.85; font-size: 0.95rem; }
+    .header-badges { display: flex; gap: 10px; justify-content: center; margin-top: 14px; flex-wrap: wrap; }
+    .badge {
+      background: rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    /* Store info */
+    .store-info {
+      display: flex;
+      gap: 12px;
+      max-width: 900px;
+      margin: 24px auto 0;
+      padding: 0 16px;
+      flex-wrap: wrap;
+    }
+    .store-card {
+      flex: 1;
+      min-width: 180px;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .store-icon { font-size: 2rem; }
+    .store-card h3 { font-size: 0.85rem; color: var(--gray); }
+    .store-card p { font-size: 1.1rem; font-weight: 600; margin-top: 2px; }
+
+    /* Tab nav */
+    .tabs {
+      display: flex;
+      gap: 0;
+      max-width: 900px;
+      margin: 24px auto 0;
+      padding: 0 16px;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      background: var(--card);
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--gray);
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+    }
+    .tab-btn:first-child { border-radius: var(--radius) 0 0 0; }
+    .tab-btn:last-child { border-radius: 0 var(--radius) 0 0; }
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+      background: var(--primary-light);
+    }
+    .tab-btn:hover:not(.active) { background: #f9fafb; }
+
+    /* Content */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Section title */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 20px 0 12px;
+    }
+    .section-title .floor-badge {
+      background: var(--primary);
+      color: #fff;
+      border-radius: 8px;
+      padding: 4px 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .section-title h2 { font-size: 1.1rem; font-weight: 600; }
+
+    /* Product card */
+    .product-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .product-card:hover { border-color: var(--primary-light); }
+    .product-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px 12px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .brand-logo {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .brand-gree { background: #fee2e2; color: #dc2626; }
+    .brand-midea { background: #dbeafe; color: #2563eb; }
+    .product-title h3 { font-size: 1rem; font-weight: 700; }
+    .product-title .model { font-size: 0.78rem; color: var(--gray); margin-top: 2px; font-family: monospace; }
+    .tags { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+    .tag {
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    .tag-green { background: var(--green-light); color: var(--green); }
+    .tag-blue { background: var(--primary-light); color: var(--primary); }
+    .tag-orange { background: var(--orange-light); color: var(--orange); }
+
+    /* Price table */
+    .price-table { padding: 16px 20px; }
+    .price-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      transition: background 0.15s;
+    }
+    .price-row:hover { background: #f9fafb; }
+    .price-row.best { background: var(--green-light); }
+    .platform-name {
+      display: flex; align-items: center; gap: 8px;
+      min-width: 80px; font-weight: 500; font-size: 0.9rem;
+    }
+    .platform-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .dot-jd { background: #dc2626; }
+    .dot-suning { background: #f59e0b; }
+    .dot-taobao { background: #f97316; }
+    .price-amount {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #dc2626;
+      min-width: 100px;
+    }
+    .price-after-subsidy {
+      font-size: 0.8rem;
+      color: var(--green);
+      background: var(--green-light);
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+    .price-note { font-size: 0.8rem; color: var(--gray); flex: 1; }
+    .buy-btn {
+      padding: 7px 16px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .buy-btn:hover { background: #1d4ed8; }
+    .buy-btn.secondary {
+      background: #fff;
+      color: var(--primary);
+      border: 1.5px solid var(--primary);
+    }
+    .buy-btn.secondary:hover { background: var(--primary-light); }
+    .best-label {
+      font-size: 0.72rem;
+      background: var(--green);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+
+    /* Summary panel */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .summary-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      border-left: 4px solid var(--primary);
+    }
+    .summary-card.best-deal { border-left-color: var(--green); }
+    .summary-card.mid-deal { border-left-color: #f59e0b; }
+    .summary-card h3 { font-size: 0.9rem; color: var(--gray); margin-bottom: 6px; }
+    .summary-card .combo-name { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .summary-card .combo-items { font-size: 0.82rem; color: var(--gray); line-height: 1.7; }
+    .summary-card .total-price {
+      margin-top: 12px;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #dc2626;
+    }
+    .summary-card .total-after {
+      font-size: 0.85rem;
+      color: var(--green);
+      margin-top: 2px;
+    }
+
+    /* Tips */
+    .tips-box {
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-top: 20px;
+    }
+    .tips-box h3 { font-size: 0.9rem; font-weight: 700; color: #92400e; margin-bottom: 10px; }
+    .tips-box ul { padding-left: 18px; }
+    .tips-box li { font-size: 0.85rem; color: #78350f; margin-bottom: 6px; line-height: 1.5; }
+
+    /* Subsidy banner */
+    .subsidy-banner {
+      background: linear-gradient(90deg, #16a34a, #15803d);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .subsidy-banner .icon { font-size: 1.8rem; }
+    .subsidy-banner h3 { font-size: 0.95rem; font-weight: 700; }
+    .subsidy-banner p { font-size: 0.82rem; opacity: 0.9; margin-top: 2px; }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      .price-row { flex-wrap: wrap; gap: 8px; }
+      .price-note { display: none; }
+      .platform-name { min-width: 70px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🏪 服装店空调选购比价</h1>
+  <p>上层 50㎡ · 下层 70㎡ · 两台分体式方案</p>
+  <div class="header-badges">
+    <span class="badge">📅 2026年4月更新</span>
+    <span class="badge">🏷️ 含国家补贴价</span>
+    <span class="badge">✅ 一级能效</span>
+    <span class="badge">🔗 附购买链接</span>
+  </div>
+</header>
+
+<div class="store-info">
+  <div class="store-card">
+    <div class="store-icon">🏬</div>
+    <div>
+      <h3>店铺类型</h3>
+      <p>服装零售店</p>
+    </div>
+  </div>
+  <div class="store-card">
+    <div class="store-icon">📐</div>
+    <div>
+      <h3>上层面积</h3>
+      <p>50 ㎡</p>
+    </div>
+  </div>
+  <div class="store-card">
+    <div class="store-icon">📐</div>
+    <div>
+      <h3>下层面积</h3>
+      <p>70 ㎡</p>
+    </div>
+  </div>
+  <div class="store-card">
+    <div class="store-icon">❄️</div>
+    <div>
+      <h3>推荐方案</h3>
+      <p>分体式 · 2台</p>
+    </div>
+  </div>
+</div>
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('floor1')">🏠 下层 70㎡</button>
+  <button class="tab-btn" onclick="switchTab('floor2')">🏠 上层 50㎡</button>
+  <button class="tab-btn" onclick="switchTab('summary')">💰 总结对比</button>
+</div>
+
+<div class="content">
+
+  <!-- 下层 70㎡ -->
+  <div class="tab-panel active" id="floor1">
+
+    <div class="section-title">
+      <span class="floor-badge">下层 70㎡</span>
+      <h2>推荐：3匹立式柜机</h2>
+    </div>
+
+    <!-- 格力云锦三代 -->
+    <div class="product-card">
+      <div class="product-header">
+        <div class="brand-logo brand-gree">格</div>
+        <div class="product-title">
+          <h3>格力 云锦三代 · 3匹柜机</h3>
+          <div class="model">KFR-72LW/NhBa1BAj</div>
+          <div class="tags">
+            <span class="tag tag-green">新一级能效</span>
+            <span class="tag tag-blue">全直流变频</span>
+            <span class="tag tag-blue">纯铜管</span>
+            <span class="tag tag-orange">APF 4.56</span>
+            <span class="tag tag-green">自清洁</span>
+          </div>
+        </div>
+      </div>
+      <div class="price-table">
+        <div class="price-row best">
+          <div class="platform-name"><span class="platform-dot dot-jd"></span>京东</div>
+          <div class="price-amount">¥5,500</div>
+          <div class="price-after-subsidy">国补后约 ¥5,000</div>
+          <div class="price-note">格力官方旗舰店 · 可申请国补</div>
+          <span class="best-label">🏆 最优</span>
+          <a class="buy-btn" href="https://item.jd.com/100089386547.html" target="_blank">去购买</a>
+        </div>
+        <div class="price-row">
+          <div class="platform-name"><span class="platform-dot dot-taobao"></span>淘宝</div>
+          <div class="price-amount">¥5,838</div>
+          <div class="price-after-subsidy">国补后约 ¥5,300</div>
+          <div class="price-note">格力天猫旗舰店</div>
+          <a class="buy-btn secondary" href="https://s.taobao.com/search?q=格力KFR-72LW%2FNhBa1BAj" target="_blank">去购买</a>
+        </div>
+        <div class="price-row">
+          <div class="platform-name"><span class="platform-dot dot-suning"></span>苏宁</div>
+          <div class="price-amount">¥7,299</div>
+          <div class="price-after-subsidy">国补后约 ¥6,800</div>
+          <div class="price-note">官方旗舰店 · 价格偏高</div>
+          <a class="buy-btn secondary" href="https://www.suning.com/item/0010359862/12434075530.html" target="_blank">去查看</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 美的冷静星 -->
+    <div class="product-card">
+      <div class="product-header">
+        <div class="brand-logo brand-midea">美</div>
+        <div class="product-title">
+          <h3>美的 冷静星 · 大3匹柜机</h3>
+          <div class="model">KFR-72LW/N8MFB3</div>
+          <div class="tags">
+            <span class="tag tag-green">一级能效</span>
+            <span class="tag tag-blue">2026新品</span>
+            <span class="tag tag-blue">大风量设计</span>
+            <span class="tag tag-orange">可拆卸滤网</span>
+          </div>
+        </div>
+      </div>
+      <div class="price-table">
+        <div class="price-row best">
+          <div class="platform-name"><span class="platform-dot dot-jd"></span>京东</div>
+          <div class="price-amount">¥4,500</div>
+          <div class="price-after-subsidy">国补后约 ¥3,800</div>
+          <div class="price-note">美的官方旗舰店 · 2026新款</div>
+          <span class="best-label">🏆 最优</span>
+          <a class="buy-btn" href="https://www.jd.com/hprm/737ce63bea09291d4cb.html" target="_blank">去购买</a>
+        </div>
+        <div class="price-row">
+          <div class="platform-name"><span class="platform-dot dot-taobao"></span>淘宝</div>
+          <div class="price-amount">¥4,500</div>
+          <div class="price-after-subsidy">国补后约 ¥3,800</div>
+          <div class="price-note">美的官方商城</div>
+          <a class="buy-btn secondary" href="https://www.midea.cn/30/1000000000400731804373.html" target="_blank">去购买</a>
+        </div>
+        <div class="price-row">
+          <div class="platform-name"><span class="platform-dot dot-suning"></span>苏宁</div>
+          <div class="price-amount">¥4,800</div>
+          <div class="price-after-subsidy">国补后约 ¥4,100</div>
+          <div class="price-note">美的官方旗舰店</div>
+          <a class="buy-btn secondary" href="https://www.suning.com/item/0071564281/12414439799.html" target="_blank">去查看</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>⚠️ 下层选购注意事项</h3>
+      <ul>
+        <li>70㎡用单台3匹柜机属于<strong>勉强覆盖</strong>，若店铺为长走廊型（深度超8米），建议改为2匹挂机×2台</li>
+        <li>柜机<strong>不要直吹衣架</strong>，长期吹会导致衣物褪色、起静电，建议斜向出风</li>
+        <li>格力云锦三代全直流变频，<strong>运行更静音</strong>，适合服装店购物氛围</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 上层 50㎡ -->
+  <div class="tab-panel" id="floor2">
+
+    <div class="section-title">
+      <span class="floor-badge">上层 50㎡</span>
+      <h2>推荐：2匹挂机</h2>
+    </div>
+
+    <!-- 格力清炫风 -->
+    <div class="product-card">
+      <div class="product-header">
+        <div class="brand-logo brand-gree">格</div>
+        <div class="product-title">
+          <h3>格力 清炫风 · 2匹挂机</h3>
+          <div class="model">KFR-50GW/NhKf1BAt</div>
+          <div class="tags">
+            <span class="tag tag-green">新一级能效</span>
+            <span class="tag tag-blue">变频冷暖</span>
+            <span class="tag tag-blue">WiFi智控</span>
+            <span class="tag tag-green">56℃净菌自洁</span>
+            <span class="tag tag-orange">整机10年质保</span>
+          </div>
+        </div>
+      </div>
+      <div class="price-table">
+        <div class="price-row best">
+          <div class="platform-name"><span class="platform-dot dot-jd"></span>京东</div>
+          <div class="price-amount">¥3,200</div>
+          <div class="price-after-subsidy">国补后约 ¥2,700</div>
+          <div class="price-note">格力官方旗舰店</div>
+          <span class="best-label">🏆 最优</span>
+          <a class="buy-btn" href="https://www.jd.com/hprm/73725856af70a8f07fc.html" target="_blank">去购买</a>
+        </div>
+        <div class="price-row">
+          <div class="platform-name"><span class="platform-dot dot-suning"></span>苏宁</div>
+          <div class="price-amount">¥5,899</div>
+          <div class="price-after-subsidy">国补后约 ¥5,400</div>
+          <div class="price-note">⚠️ 价格偏高，不推荐</div>
+          <a class="buy-btn secondary" href="https://www.suning.com/item/0071261484/000000012414495658.html" target="_blank">去查看</a>
+        </div>
+        <div class="price-row">
+          <div class="platform-name"><span class="platform-dot dot-taobao"></span>天猫</div>
+          <div class="price-amount">¥7,499</div>
+          <div class="price-after-subsidy">国补后约 ¥7,000</div>
+          <div class="price-note">⚠️ 专卖店价格虚高，不推荐</div>
+          <a class="buy-btn secondary" href="https://s.taobao.com/search?q=格力KFR-50GW%2FNhKf1BAt" target="_blank">去查看</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 美的酷省电 -->
+    <div class="product-card">
+      <div class="product-header">
+        <div class="brand-logo brand-midea">美</div>
+        <div class="product-title">
+          <h3>美的 酷省电 · 2匹挂机</h3>
+          <div class="model">KFR-46GW/N8KS1-1</div>
+          <div class="tags">
+            <span class="tag tag-green">新一级能效</span>
+            <span class="tag tag-blue">全直流变频</span>
+            <span class="tag tag-blue">第四代自清洁</span>
+            <span class="tag tag-orange">静音18分贝</span>
+            <span class="tag tag-green">双排纯铜管</span>
+          </div>
+        </div>
+      </div>
+      <div class="price-table">
+        <div class="price-row best">
+          <div class="platform-name"><span class="platform-dot dot-jd"></span>京东</div>
+          <div class="price-amount">¥2,136</div>
+          <div class="price-after-subsidy">国补后约 ¥1,636</div>
+          <div class="price-note">美的官方旗舰店 · 促销价</div>
+          <span class="best-label">🏆 最优</span>
+          <a class="buy-btn" href="https://item.jd.com/100059650463.html" target="_blank">去购买</a>
+        </div>
+        <div class="price-row">
+          <div class="platform-name"><span class="platform-dot dot-suning"></span>苏宁</div>
+          <div class="price-amount">¥2,600</div>
+          <div class="price-after-subsidy">国补后约 ¥2,100</div>
+          <div class="price-note">美的官方旗舰店</div>
+          <a class="buy-btn secondary" href="https://www.suning.com/item/0071569198/12412152637.html" target="_blank">去查看</a>
+        </div>
+        <div class="price-row">
+          <div class="platform-name"><span class="platform-dot dot-taobao"></span>美的官网</div>
+          <div class="price-amount">参考价</div>
+          <div class="price-after-subsidy">以页面为准</div>
+          <div class="price-note">美的官方商城</div>
+          <a class="buy-btn secondary" href="https://www.midea.cn/30/1000000000400731470716.html" target="_blank">去查看</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>⚠️ 上层选购注意事项</h3>
+      <ul>
+        <li>50㎡一台2匹挂机<strong>完全够用</strong>，无需柜机</li>
+        <li>美的酷省电静音仅18分贝，<strong>适合服装店安静购物环境</strong></li>
+        <li>格力清炫风京东与苏宁/天猫<strong>价差悬殊</strong>，请务必选择京东官方旗舰店购买</li>
+        <li>安装时挂机高度建议距地面<strong>1.8-2.2米</strong>，出风不直吹试衣间</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 总结对比 -->
+  <div class="tab-panel" id="summary">
+
+    <div class="section-title">
+      <span class="floor-badge">组合对比</span>
+      <h2>选哪套最划算？</h2>
+    </div>
+
+    <div class="summary-grid">
+      <div class="summary-card">
+        <h3>💎 最稳定方案</h3>
+        <div class="combo-name">格力全套</div>
+        <div class="combo-items">
+          🏠 下层：格力云锦三代 3匹柜机<br>
+          🏠 上层：格力清炫风 2匹挂机<br>
+          📦 全部在京东官方旗舰店购买
+        </div>
+        <div class="total-price">¥8,700</div>
+        <div class="total-after">✅ 国补后约 ¥7,700</div>
+      </div>
+
+      <div class="summary-card best-deal">
+        <h3>🏆 性价比最优方案</h3>
+        <div class="combo-name">格力柜机 + 美的挂机</div>
+        <div class="combo-items">
+          🏠 下层：格力云锦三代 3匹柜机（稳定）<br>
+          🏠 上层：美的酷省电 2匹挂机（省钱）<br>
+          📦 均在京东官方旗舰店购买
+        </div>
+        <div class="total-price">¥7,636</div>
+        <div class="total-after">✅ 国补后约 ¥6,600</div>
+      </div>
+
+      <div class="summary-card mid-deal">
+        <h3>💰 最省钱方案</h3>
+        <div class="combo-name">美的全套</div>
+        <div class="combo-items">
+          🏠 下层：美的冷静星 3匹柜机（新品）<br>
+          🏠 上层：美的酷省电 2匹挂机（极静音）<br>
+          📦 均在京东/美的官方旗舰店购买
+        </div>
+        <div class="total-price">¥6,636</div>
+        <div class="total-after">✅ 国补后约 ¥5,600</div>
+      </div>
+    </div>
+
+    <div class="subsidy-banner">
+      <div class="icon">🎯</div>
+      <div>
+        <h3>2026年国家以旧换新补贴</h3>
+        <p>空调享受国补 15%，每台最高省 500元 · 京东/淘宝/苏宁下单选「以旧换新」即可申请 · 两台最多省约 1,000元</p>
+      </div>
+    </div>
+
+    <div class="tips-box">
+      <h3>🛒 服装店专属购买建议</h3>
+      <ul>
+        <li><strong>平台选择</strong>：格力优先选京东官方旗舰店，苏宁和天猫部分型号价格虚高</li>
+        <li><strong>安装时间</strong>：建议避开夏季旺季（6-8月），提前3-4月安装，师傅档期宽松、服务更好</li>
+        <li><strong>安装费用</strong>：安装费约 300-500元/台，打孔、铜管延长另计，提前询价</li>
+        <li><strong>租赁店铺</strong>：安装前务必取得房东书面同意，避免退租纠纷</li>
+        <li><strong>售后保障</strong>：格力/美的全国联保，格力清炫风整机10年质保，长期营业更安心</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Footer note -->
+  <p style="text-align:center; color: var(--gray); font-size: 0.78rem; margin-top: 30px;">
+    价格来源：京东 / 苏宁 / 淘宝，2026-04-17 搜集，实际以平台页面为准 · 国补政策以购买时官方说明为准
+  </p>
+
+</div>
+
+<script>
+  function switchTab(id) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
