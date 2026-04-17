@@ -259,16 +259,16 @@
     }
 
     .plat-logo {
-      width: 44px; height: 44px;
+      width: 36px; height: 36px;
       border-radius: 9px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.75rem; font-weight: 800;
+      font-size: 1rem; font-weight: 800;
       flex-shrink: 0;
     }
-    .plat-jd { background: #dc2626; color: #fff; }
-    .plat-pdd { background: #e02020; color: #fff; font-size: 0.65rem; }
-    .plat-sn { background: #f59f00; color: #fff; }
-    .plat-md { background: #1565c0; color: #fff; }
+    .plat-jd { background: #dc2626; color: #fff; font-size: 0.7rem; }
+    .plat-tb { background: #ff6900; color: #fff; font-size: 0.7rem; }
+    .plat-sn { background: #f59f00; color: #fff; font-size: 0.7rem; }
+    .plat-md { background: #1565c0; color: #fff; font-size: 0.7rem; }
 
     .plat-info { flex: 1; min-width: 0; }
     .plat-name { font-size: 0.85rem; font-weight: 600; }
@@ -577,7 +577,7 @@
         <div class="price-section-title">多平台价格对比</div>
         <div class="price-rows">
 
-          <div class="price-row best-row" onclick="return openJD(event,'100089386547')">
+          <div class="price-row best-row" onclick="openJD('100089386547')">
             <div class="plat-logo plat-jd">京东</div>
             <div class="plat-info">
               <div class="plat-name">京东官方旗舰店</div>
@@ -588,10 +588,10 @@
               <div class="price-main">¥5,500</div>
               <div class="price-after">补贴后 ≈¥5,000</div>
             </div>
-            <a class="buy-btn buy-btn-primary" href="javascript:void(0)" >立即购买</a>
+            <button class="buy-btn buy-btn-primary">立即购买</button>
           </div>
 
-          <div class="price-row" onclick="return openTaobao(event,null,'格力KFR-72LW/NhBa1BAj')">
+          <div class="price-row" onclick="openTaobao(null,'格力KFR-72LW/NhBa1BAj')">
             <div class="plat-logo plat-tb">天猫</div>
             <div class="plat-info">
               <div class="plat-name">天猫旗舰店</div>
@@ -601,10 +601,10 @@
               <div class="price-main">¥5,838</div>
               <div class="price-after">补贴后 ≈¥5,300</div>
             </div>
-            <a class="buy-btn buy-btn-ghost" href="https://s.taobao.com/search?q=%E6%A0%BC%E5%8A%9BKFR-72LW%2FNhBa1BAj" >去购买</a>
+            <button class="buy-btn buy-btn-ghost">去购买</button>
           </div>
 
-          <div class="price-row" onclick="return openSuning(event,'12434075530','https://m.suning.com/product/0010359862/12434075530.html')">
+          <div class="price-row" onclick="openSuning('12434075530','https://m.suning.com/product/0010359862/12434075530.html')">
             <div class="plat-logo plat-sn">苏宁</div>
             <div class="plat-info">
               <div class="plat-name">苏宁旗舰店</div>
@@ -614,20 +614,8 @@
               <div class="price-main" style="color:var(--gray)">¥7,299</div>
               <div class="price-after" style="background:#f1f3f5;color:var(--gray)">补贴后 ≈¥6,800</div>
             </div>
-            <a class="buy-btn buy-btn-ghost" href="javascript:void(0)"  style="color:var(--gray);border-color:var(--border)">参考</a>
+            <button class="buy-btn buy-btn-ghost" style="color:var(--gray);border-color:var(--border)">参考</button>
           </div>
-
-          <div class="price-row" onclick="return openPDD(event,'格力云錦三代 3匹 KFR-72LW 柜机')">
-            <div class="plat-logo plat-pdd">拼</div>
-            <div class="plat-info">
-              <div class="plat-name">拼多多 · 百亿补贴</div>
-              <div class="plat-note">格力3匹柜机 · 无需登录可浏览</div>
-            </div>
-            <div class="price-block">
-              <div class="price-main" style="font-size:0.9rem">约¥5,200起</div>
-              <div class="price-after">百亿补贴 · 点击查看</div>
-            </div>
-            <a class="buy-btn buy-btn-ghost" href="javascript:void(0)" style="color:#e02020;border-color:#e02020">去搜索</a>
 
         </div>
       </div>
@@ -654,7 +642,7 @@
         <div class="price-section-title">多平台价格对比</div>
         <div class="price-rows">
 
-          <div class="price-row best-row" onclick="return openJD(event,'10215347596483')">
+          <div class="price-row best-row" onclick="openJD('10215347596483')">
             <div class="plat-logo plat-jd">京东</div>
             <div class="plat-info">
               <div class="plat-name">京东官方旗舰店</div>
@@ -665,10 +653,10 @@
               <div class="price-main">¥4,500</div>
               <div class="price-after">补贴后 ≈¥3,800</div>
             </div>
-            <a class="buy-btn buy-btn-primary" href="javascript:void(0)" >立即购买</a>
+            <button class="buy-btn buy-btn-primary">立即购买</button>
           </div>
 
-          <div class="price-row" onclick="return openTaobao(event,null,'美的KFR-72LW/N8MFB3 3匹柜机')">
+          <div class="price-row" onclick="openTaobao(null,'美的KFR-72LW/N8MFB3 3匹柜机')">
             <div class="plat-logo plat-tb">天猫</div>
             <div class="plat-info">
               <div class="plat-name">天猫旗舰店</div>
@@ -678,10 +666,10 @@
               <div class="price-main">¥4,500</div>
               <div class="price-after">补贴后 ≈¥3,800</div>
             </div>
-            <a class="buy-btn buy-btn-ghost" href="https://s.taobao.com/search?q=%E7%BE%8E%E7%9A%84KFR-72LW%2FN8MFB3%203%E5%8C%B9%E6%9F%9C%E6%9C%BA" >去购买</a>
+            <button class="buy-btn buy-btn-ghost">去购买</button>
           </div>
 
-          <div class="price-row" onclick="return openSuning(event,'12414439799','https://m.suning.com/product/0071564281/12414439799.html')">
+          <div class="price-row" onclick="openSuning('12414439799','https://m.suning.com/product/0071564281/12414439799.html')">
             <div class="plat-logo plat-sn">苏宁</div>
             <div class="plat-info">
               <div class="plat-name">苏宁旗舰店</div>
@@ -691,20 +679,8 @@
               <div class="price-main">¥4,800</div>
               <div class="price-after">补贴后 ≈¥4,100</div>
             </div>
-            <a class="buy-btn buy-btn-ghost" href="https://m.suning.com/product/0071564281/12414439799.html" >去查看</a>
+            <button class="buy-btn buy-btn-ghost">去查看</button>
           </div>
-
-          <div class="price-row" onclick="return openPDD(event,'美的冷静星 3匹 KFR-72LW 柜机 一级能效')">
-            <div class="plat-logo plat-pdd">拼</div>
-            <div class="plat-info">
-              <div class="plat-name">拼多多 · 百亿补贴</div>
-              <div class="plat-note">美的 KFR-72LW · 无需登录可浏览</div>
-            </div>
-            <div class="price-block">
-              <div class="price-main" style="font-size:0.9rem">约¥4,200起</div>
-              <div class="price-after">百亿补贴 · 点击查看</div>
-            </div>
-            <a class="buy-btn buy-btn-ghost" href="javascript:void(0)" style="color:#e02020;border-color:#e02020">去搜索</a>
 
         </div>
       </div>
@@ -758,7 +734,7 @@
         <div class="price-section-title">多平台价格对比</div>
         <div class="price-rows">
 
-          <div class="price-row best-row" onclick="return openJD(event,'10109617921')">
+          <div class="price-row best-row" onclick="openJD('10109617921')">
             <div class="plat-logo plat-jd">京东</div>
             <div class="plat-info">
               <div class="plat-name">京东官方旗舰店</div>
@@ -769,10 +745,10 @@
               <div class="price-main">¥3,200</div>
               <div class="price-after">补贴后 ≈¥2,700</div>
             </div>
-            <a class="buy-btn buy-btn-primary" href="javascript:void(0)" >立即购买</a>
+            <button class="buy-btn buy-btn-primary">立即购买</button>
           </div>
 
-          <div class="price-row" onclick="return openSuning(event,'12414495658','https://m.suning.com/product/0071261484/12414495658.html')">
+          <div class="price-row" onclick="openSuning('12414495658','https://m.suning.com/product/0071261484/12414495658.html')">
             <div class="plat-logo plat-sn">苏宁</div>
             <div class="plat-info">
               <div class="plat-name">苏宁旗舰店</div>
@@ -782,10 +758,10 @@
               <div class="price-main" style="color:var(--gray)">¥5,899</div>
               <div class="price-after" style="background:#f1f3f5;color:var(--gray)">补贴后 ≈¥5,400</div>
             </div>
-            <a class="buy-btn buy-btn-ghost" href="javascript:void(0)"  style="color:var(--gray);border-color:var(--border)">参考</a>
+            <button class="buy-btn buy-btn-ghost" style="color:var(--gray);border-color:var(--border)">参考</button>
           </div>
 
-          <div class="price-row" onclick="return openTaobao(event,null,'格力KFR-50GW/NhKf1BAt')">
+          <div class="price-row" onclick="openTaobao(null,'格力KFR-50GW/NhKf1BAt')">
             <div class="plat-logo plat-tb">天猫</div>
             <div class="plat-info">
               <div class="plat-name">天猫旗舰店</div>
@@ -795,20 +771,8 @@
               <div class="price-main" style="color:var(--gray)">¥7,499</div>
               <div class="price-after" style="background:#f1f3f5;color:var(--gray)">补贴后 ≈¥7,000</div>
             </div>
-            <a class="buy-btn buy-btn-ghost" href="javascript:void(0)"  style="color:var(--gray);border-color:var(--border)">参考</a>
+            <button class="buy-btn buy-btn-ghost" style="color:var(--gray);border-color:var(--border)">参考</button>
           </div>
-
-          <div class="price-row" onclick="return openPDD(event,'格力清玄风 2匹 KFR-50GW 挂机 一级能效')">
-            <div class="plat-logo plat-pdd">拼</div>
-            <div class="plat-info">
-              <div class="plat-name">拼多多 · 百亿补贴</div>
-              <div class="plat-note">格力2匹挂机 · 无需登录可浏览</div>
-            </div>
-            <div class="price-block">
-              <div class="price-main" style="font-size:0.9rem">约¥2,900起</div>
-              <div class="price-after">百亿补贴 · 点击查看</div>
-            </div>
-            <a class="buy-btn buy-btn-ghost" href="javascript:void(0)" style="color:#e02020;border-color:#e02020">去搜索</a>
 
         </div>
       </div>
@@ -836,7 +800,7 @@
         <div class="price-section-title">多平台价格对比</div>
         <div class="price-rows">
 
-          <div class="price-row best-row" onclick="return openJD(event,'100059650463')">
+          <div class="price-row best-row" onclick="openJD('100059650463')">
             <div class="plat-logo plat-jd">京东</div>
             <div class="plat-info">
               <div class="plat-name">京东官方旗舰店</div>
@@ -847,10 +811,10 @@
               <div class="price-main">¥2,136</div>
               <div class="price-after">补贴后 ≈¥1,636</div>
             </div>
-            <a class="buy-btn buy-btn-primary" href="javascript:void(0)" >立即购买</a>
+            <button class="buy-btn buy-btn-primary">立即购买</button>
           </div>
 
-          <div class="price-row" onclick="return openSuning(event,'12412152637','https://m.suning.com/product/0071569198/12412152637.html')">
+          <div class="price-row" onclick="openSuning('12412152637','https://m.suning.com/product/0071569198/12412152637.html')">
             <div class="plat-logo plat-sn">苏宁</div>
             <div class="plat-info">
               <div class="plat-name">苏宁旗舰店</div>
@@ -860,10 +824,10 @@
               <div class="price-main">¥2,600</div>
               <div class="price-after">补贴后 ≈¥2,100</div>
             </div>
-            <a class="buy-btn buy-btn-ghost" href="https://m.suning.com/product/0071569198/12412152637.html" >去查看</a>
+            <button class="buy-btn buy-btn-ghost">去查看</button>
           </div>
 
-          <div class="price-row" onclick="return openTaobao(event,null,'美的KFR-46GW/N8KS1-1 2匹挂机')">
+          <div class="price-row" onclick="openTaobao(null,'美的KFR-46GW/N8KS1-1 2匹挂机')">
             <div class="plat-logo plat-tb">天猫</div>
             <div class="plat-info">
               <div class="plat-name">天猫旗舰店</div>
@@ -872,20 +836,8 @@
             <div class="price-block">
               <div class="price-main" style="font-size:0.9rem;color:var(--gray)">天猫搜索</div>
             </div>
-            <a class="buy-btn buy-btn-ghost" href="https://s.taobao.com/search?q=%E7%BE%8E%E7%9A%84KFR-46GW%2FN8KS1-1%202%E5%8C%B9%E6%8C%82%E6%9C%BA" >去查看</a>
+            <button class="buy-btn buy-btn-ghost">去查看</button>
           </div>
-
-          <div class="price-row" onclick="return openPDD(event,'美的酷省电 2匹 KFR-46GW 挂机 一级能效')">
-            <div class="plat-logo plat-pdd">拼</div>
-            <div class="plat-info">
-              <div class="plat-name">拼多多 · 百亿补贴</div>
-              <div class="plat-note">美的 KFR-46GW · 无需登录可浏览</div>
-            </div>
-            <div class="price-block">
-              <div class="price-main" style="font-size:0.9rem">约¥1,900起</div>
-              <div class="price-after">百亿补贴 · 点击查看</div>
-            </div>
-            <a class="buy-btn buy-btn-ghost" href="javascript:void(0)" style="color:#e02020;border-color:#e02020">去搜索</a>
 
         </div>
       </div>
@@ -1067,39 +1019,37 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  /* ── App 直跳：点击先尝试唤起App，安全降级到网页 ── */
-  function openApp(e, scheme, fallback) {
+  /* ── App 直跳（手机端唤起App，降级到网页）── */
+  function openApp(scheme, fallback) {
     var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (!isMobile) { return true; } // 电脑端直接跳fallback（href）
-    e.preventDefault();
-    window.location.href = scheme;
-    setTimeout(function() {
-      window.location.href = fallback;
+    if (!isMobile) { window.open(fallback, '_blank'); return; }
+    var start = Date.now();
+    var timer = setTimeout(function() {
+      if (Date.now() - start < 2000) window.location.href = fallback;
     }, 1200);
-    return false;
+    window.addEventListener('blur', function onBlur() {
+      clearTimeout(timer);
+      window.removeEventListener('blur', onBlur);
+    });
+    window.location.href = scheme;
   }
 
-  function openJD(e, itemId) {
+  function openJD(itemId) {
     var scheme = 'openapp.jdmobile://virtual?params=%7B%22category%22%3A%22jump%22%2C%22des%22%3A%22productDetail%22%2C%22skuId%22%3A%22' + itemId + '%22%7D';
-    return openApp(e, scheme, 'https://item.jd.com/' + itemId + '.html');
+    openApp(scheme, 'https://item.jd.com/' + itemId + '.html');
   }
-  function openPDD(e, keyword) {
-    var q = encodeURIComponent(keyword);
-    return openApp(e, 'pinduoduo://com.xunmeng.pinduoduo/search_result.html?search_key=' + q,
-      'https://mobile.yangkeduo.com/search_result.html?search_key=' + q);
-  }
-  function openTaobao(e, itemId, keyword) {
+  function openTaobao(itemId, keyword) {
     if (itemId) {
-      return openApp(e, 'taobao://item.taobao.com/item.htm?id=' + itemId,
+      openApp('taobao://item.taobao.com/item.htm?id=' + itemId,
               'https://m.taobao.com/#/detail?itemNumId=' + itemId);
     } else {
       var q = encodeURIComponent(keyword);
-      return openApp(e, 'taobao://s.taobao.com/search?q=' + q,
+      openApp('taobao://s.taobao.com/search?q=' + q,
               'https://s.taobao.com/search?q=' + q);
     }
   }
-  function openSuning(e, itemId, fallbackUrl) {
-    return openApp(e, 'suning://productDetail?commodityCode=' + itemId, fallbackUrl);
+  function openSuning(itemId, fallbackUrl) {
+    openApp('suning://productDetail?commodityCode=' + itemId, fallbackUrl);
   }
 
 </script>
